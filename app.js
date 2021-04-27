@@ -25,6 +25,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.post('/login', (req, res) => {
+  res.render('index')
+})
+
 
 // listening on the server
 app.listen(port, () => {
