@@ -3,6 +3,11 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const port = 3000
+const exphbs = require('express-handlebars')
+
+// views engine setting
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
 // connecting to db
 mongoose.connect('mongodb://localhost/login-user', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -16,8 +21,8 @@ db.once('open', () => {
 })
 
 // route setting
-app.get('/', (res, req) => {
-  res.send('Hello World')
+app.get('/', (req, res) => {
+  res.render('index')
 })
 
 
